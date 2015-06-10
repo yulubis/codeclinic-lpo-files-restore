@@ -1,3 +1,5 @@
+#/usr/bin/python3
+
 import os
 import random
 import datetime
@@ -58,7 +60,7 @@ while(d.year == 2008):
     os.makedirs(data)
     pth = data
     os.chdir(pth)
-    wind_gust(data)
+    wind_speed(data)
     air_temp(data)
     barom_press(data)
     os.chdir(os.pardir)
