@@ -52,15 +52,25 @@ def temp(dt):
         t = str(round(random.uniform(7.0, 12.0), 1)) 
     return t
 
+def populate(year):
+    d = datetime.date(int(year), 1, 1)
+    while(d.year == year):
+        data = str(d).replace('-', '_')
+        os.makedirs(data, exist_ok=True)
+        pth = data
+        os.chdir(pth)
+        wind_speed(data)
+        air_temp(data)
+        barom_press(data)
+        os.chdir(os.pardir)
+        d += timedelta(1)
 
-d = datetime.date(2008, 1, 1)
-while(d.year == 2008):
-    data = str(d).replace('-', '_')
-    os.makedirs(data)
-    pth = data
-    os.chdir(pth)
-    wind_speed(data)
-    air_temp(data)
-    barom_press(data)
+end_year = 2014
+year = 2008
+
+while(year <= end_year):
+    os.makedirs(str(year), exist_ok=True)
+    os.chdir(str(year))
+    populate(int(year))
+    year += 1
     os.chdir(os.pardir)
-    d += timedelta(1)
