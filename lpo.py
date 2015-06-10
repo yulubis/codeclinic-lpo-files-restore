@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 
-import os
-import random
+import os, random
 import datetime
 from datetime import timedelta
 
@@ -13,7 +12,7 @@ def wind_speed(date):
     while(d.day == 1):
         f.write(date + ' ' + str(d.time()).replace('-', '_') + 
         ' ' + str(round(random.uniform(0.1, 1.5)*10, 1)) + '\r\n')
-        d = d + delta
+        d += delta
         
     f.close()
 
@@ -24,8 +23,8 @@ def barom_press(date):
     delta = timedelta(0, 368)
     while(d.day == 1):
         f.write(date + ' ' + str(d.time()).replace('-', '_') + 
-        ' ' + str(round(random.uniform(20.0, 105.0), 1)) + '\n')
-        d = d + delta
+        ' ' + str(round(random.uniform(20.0, 105.0), 1)) + '\r\n')
+        d += delta
         
     f.close()
 
@@ -37,8 +36,8 @@ def air_temp(date):
     dt = int(date[5:7])
 
     while(d.day == 1):
-        f.write(date + ' ' + str(d.time()).replace('-', '_') + ' ' + temp(dt) + '\n')
-        d = d + delta
+        f.write(date + ' ' + str(d.time()).replace('-', '_') + ' ' + temp(dt) + '\r\n')
+        d += delta
         
     f.close()
 
